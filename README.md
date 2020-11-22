@@ -8,15 +8,18 @@ PMS(Posterior Mean Screening) is a variable screening method constructed from th
 
 ## Install from Github
 
-If R package `devtools` has not been installed, we should install it firstly:
+If the following R packages: `devtools`, `mcmc`, `truncnorm`, `glmnet` have not been installed, we should install them first:
 
 ```r
 install.packages("devtools")
+install.packages("mcmc")
+install.packages("truncnorm")
+install.packages("glmnet")
 ```
 And then, install package `PMS` from Github with 
 
 ```r
-devtools::install_github("https://github.com/kangjian2016/PMS.git")
+devtools::install_github("kangjian2016/PMS")
 libaray(PMS)
 ```
 ## Documentation
