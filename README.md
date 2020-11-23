@@ -20,7 +20,7 @@ And then, install package `PMS` from Github with
 
 ```r
 devtools::install_github("kangjian2016/PMS")
-libaray(PMS)
+library(PMS)
 ```
 ## Documentation
 
