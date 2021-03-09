@@ -80,6 +80,18 @@ pms_screening = function (x, y, family = "gaussian", method = "spatial_fixed", m
   }else {
     selected_num = selected_num
   }
+  if(is.null(selected_num)){
+    selected_num  = p
+  }
+
+  if(is.null(Lambda)){
+    Lambda = Matrix::sparseMatrix(i=c(1:p),j=c(1:p),x=rep(1,p))
+  }
+
+  if(is.null(theta)){
+    theta = 1e-3
+  }
+
   if (family == "gaussian") {
      if (method == "spatial_fixed"){
        PMS_all = pms_spatial_fixed(x = X,y = Y,Lambda = Lambda, theta = theta)

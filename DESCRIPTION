@@ -3,12 +3,14 @@ Type: Package
 Title: Posterior Mean Variable Screening
 Version: 0.1.0
 Author: Jie He, Jian Kang
-Depends: R (>= 3.2.4)
 Maintainer: Jie He <jiehe@umich.edu>
-Imports: Matrix, mcmc, truncnorm, methods, glmnet
 Description: A variable screening method for linear regression model with different      
              constructions of prior knowledge based on the framework of Bayesian modelling.
 License: GPL
 Encoding: UTF-8
 LazyData: true
+Imports: Rcpp (>= 1.0.5),  Matrix, mcmc, truncnorm, methods, glmnet
+LinkingTo: Rcpp, RcppArmadillo
+Depends: Rcpp (>= 1.0.5), RcppArmadillo
+SystemRequirements: GNU make
 RoxygenNote: 7.1.1

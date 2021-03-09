@@ -24,7 +24,7 @@ data_gen = function(n,p,rs,beta_nonzero){
   Truebeta[1:t_0]=beta_nonzero
   Trueset=c(1:t_0)
   x=scale(x)
-  y=x%*%Truebeta
+  y=x[,Trueset]%*%beta_nonzero
   y=y+rnorm(n,0,sd=sqrt(var(y)/rs))
   return(list(x = x, y = y))
 }
