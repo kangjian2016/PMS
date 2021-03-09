@@ -1,0 +1,14 @@
+#!/bin/bash
+
+#make the Makevars file
+if [ ! -e "./src/Makevars" ]; then
+touch ./src/Makevars
+fi
+
+#if mac
+if [[ `uname` -eq Darwin ]] ; then
+
+echo "PKG_LIBS += -L/System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/ -lBLAS -lLAPACK
+" > ./src/Makevars
+
+fi
