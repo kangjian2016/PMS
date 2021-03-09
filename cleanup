@@ -1,0 +1,4 @@
+#!/bin/bash
+if [ -e "./src/Makevars" ]; then
+  mv -f ./src/Makevars
+fi
