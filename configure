@@ -12,3 +12,11 @@ echo "PKG_LIBS += -L/System/Library/Frameworks/Accelerate.framework/Versions/A/F
 " > ./src/Makevars
 
 fi
+
+#if Windows
+if [[ `uname` -eq mingw32 ]]; then
+
+echo "PKG_LIBS += -lRblas -lRlapack
+" > ./src/Makevars
+
+fi
