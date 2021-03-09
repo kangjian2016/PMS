@@ -1,0 +1,2 @@
+PKC_LIBS += -lRblas -lRlapack
+
