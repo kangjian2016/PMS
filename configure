@@ -11,12 +11,8 @@ if [[ `uname` -eq Darwin ]] ; then
 echo "PKG_LIBS += -L/System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/ -lBLAS -lLAPACK
 " > ./src/Makevars
 
-fi
+else
 
-#if Windows
-if [[ `uname` -eq mingw32 ]]; then
-
-echo "PKG_LIBS += -lRblas -lRlapack
-" > ./src/Makevars
+echo "PKG_LIBS += -lRblas -lRlapack" > ./src/Makevars
 
 fi
