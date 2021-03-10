@@ -6,7 +6,7 @@ touch ./src/Makevars
 fi
 
 #if mac
-if [[ `uname` -eq Darwin ]]; then
+if [[ `uname` == Darwin ]]; then
 echo "PKG_LIBS += -L/System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/ -lBLAS -lLAPACK
 " > ./src/Makevars
 else
