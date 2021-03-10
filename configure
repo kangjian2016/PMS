@@ -9,6 +9,8 @@ fi
 if [[ `uname` == Darwin ]]; then
 echo "PKG_LIBS += -L/System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/ -lBLAS -lLAPACK
 " > ./src/Makevars
-else
-echo "PKG_LIBS += -lRblas -lRlapack" > ./src/Makevars
+fi
+#if Linux
+if [[ `uname` == Linux ]]; then
+echo "PKG_LIBS += -L/usr/lib/x86_64-linux-gnu/blas/ -lblas -L/usr/lib/x86_64-linux-gnu/lapack/ -llapack" > ./src/Makevars
 fi
