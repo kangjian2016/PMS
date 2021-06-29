@@ -7,8 +7,9 @@ fi
 
 #if mac
 if [[ `uname` == Darwin ]]; then
-echo "PKG_LIBS += -L/System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/ -lBLAS -lLAPACK
-" > ./src/Makevars
+echo "PKG_LIBS +=  -L/System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/ -lBLAS -lLAPACK
+
+PKG_CPPFLAGS += -DNDEBUG" > ./src/Makevars
 fi
 #if Linux
 if [[ `uname` == Linux ]]; then

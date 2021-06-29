@@ -10,7 +10,7 @@ License: GPL
 Encoding: UTF-8
 LazyData: true
 Imports: Rcpp (>= 1.0.5),  Matrix, mcmc, truncnorm, methods, glmnet
-LinkingTo: Rcpp, RcppArmadillo
-Depends: Rcpp (>= 1.0.5), RcppArmadillo
+LinkingTo: Rcpp, RcppArmadillo, RNifti
+Depends: Rcpp (>= 1.0.5), RcppArmadillo, RNifti
 SystemRequirements: GNU make
 RoxygenNote: 7.1.1

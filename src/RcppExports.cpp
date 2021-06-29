@@ -33,10 +33,42 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// fast_PMS_local_spatial
+Rcpp::List fast_PMS_local_spatial(arma::mat& x, arma::vec& y, arma::mat& coords, arma::mat& neighbors, arma::uvec& num_neighbors, arma::vec& rho, double theta);
+RcppExport SEXP _PMS_fast_PMS_local_spatial(SEXP xSEXP, SEXP ySEXP, SEXP coordsSEXP, SEXP neighborsSEXP, SEXP num_neighborsSEXP, SEXP rhoSEXP, SEXP thetaSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::mat& >::type x(xSEXP);
+    Rcpp::traits::input_parameter< arma::vec& >::type y(ySEXP);
+    Rcpp::traits::input_parameter< arma::mat& >::type coords(coordsSEXP);
+    Rcpp::traits::input_parameter< arma::mat& >::type neighbors(neighborsSEXP);
+    Rcpp::traits::input_parameter< arma::uvec& >::type num_neighbors(num_neighborsSEXP);
+    Rcpp::traits::input_parameter< arma::vec& >::type rho(rhoSEXP);
+    Rcpp::traits::input_parameter< double >::type theta(thetaSEXP);
+    rcpp_result_gen = Rcpp::wrap(fast_PMS_local_spatial(x, y, coords, neighbors, num_neighbors, rho, theta));
+    return rcpp_result_gen;
+END_RCPP
+}
+// fast_read_imgs_mask
+arma::mat fast_read_imgs_mask(CharacterVector& imgfiles, CharacterVector& maskfile, int verbose);
+RcppExport SEXP _PMS_fast_read_imgs_mask(SEXP imgfilesSEXP, SEXP maskfileSEXP, SEXP verboseSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< CharacterVector& >::type imgfiles(imgfilesSEXP);
+    Rcpp::traits::input_parameter< CharacterVector& >::type maskfile(maskfileSEXP);
+    Rcpp::traits::input_parameter< int >::type verbose(verboseSEXP);
+    rcpp_result_gen = Rcpp::wrap(fast_read_imgs_mask(imgfiles, maskfile, verbose));
+    return rcpp_result_gen;
+END_RCPP
+}
 
 static const R_CallMethodDef CallEntries[] = {
     {"_PMS_fast_PMS_cpp", (DL_FUNC) &_PMS_fast_PMS_cpp, 3},
     {"_PMS_fast_data_gen", (DL_FUNC) &_PMS_fast_data_gen, 4},
+    {"_PMS_fast_PMS_local_spatial", (DL_FUNC) &_PMS_fast_PMS_local_spatial, 7},
+    {"_PMS_fast_read_imgs_mask", (DL_FUNC) &_PMS_fast_read_imgs_mask, 3},
     {NULL, NULL, 0}
 };
 

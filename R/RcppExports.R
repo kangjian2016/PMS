@@ -15,3 +15,13 @@ fast_data_gen <- function(n, p, R2, beta_nonzero) {
     .Call(`_PMS_fast_data_gen`, n, p, R2, beta_nonzero)
 }
 
+#'@export
+fast_PMS_local_spatial <- function(x, y, coords, neighbors, num_neighbors, rho, theta = 1e-3) {
+    .Call(`_PMS_fast_PMS_local_spatial`, x, y, coords, neighbors, num_neighbors, rho, theta)
+}
+
+#'@export
+fast_read_imgs_mask <- function(imgfiles, maskfile, verbose = 100L) {
+    .Call(`_PMS_fast_read_imgs_mask`, imgfiles, maskfile, verbose)
+}
+

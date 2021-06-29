@@ -2,7 +2,10 @@
 
 export(data_gen)
 export(fast_PMS_cpp)
+export(fast_PMS_local_spatial)
 export(fast_data_gen)
+export(fast_read_imgs_mask)
+export(find_brain_image_neighbors)
 export(pms_screening)
 importFrom(Matrix,bdiag)
 importFrom(Matrix,sparseMatrix)

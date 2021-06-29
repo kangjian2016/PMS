@@ -33,14 +33,14 @@ pms_screening(
 
 \item{family}{the model type whose choices are the same as glmnet.}
 
-\item{method}{the specific construction of prior konelwdge in PMS method. "spatial_fixed" indicates Lambda is a known matrix;
+\item{method}{the specific construction of prior knowlwdge in PMS method. "spatial_fixed" indicates Lambda is a known matrix;
 "selection", "rank" and "group" respectively stands for PMS method apply prior selected features set,
  ranking information as well as group structure as prior mean knowledge; and "spatial", "network" respectively means that prior
  covariance matrix Lambda has spatial and network structure with unknown parameters.}
 
 \item{mu}{a numeric vector stands for known prior mean information, which can be simply set as "0" if no prior mean information is provided in methods "spatial" and "network".}
 
-\item{Lambda}{a numeric matrix of known prior covariance knowledge. Similarly, we can choosed "Lambda" as identity matrix if prior covariance knowledge is unavailable in
+\item{Lambda}{a numeric matrix of known prior covariance knowledge. Similarly, we can choose "Lambda" as identity matrix if prior covariance knowledge is unavailable in
 "selection", "rank" or "group" methods.}
 
 \item{Lambda_s}{a numeric matrix represents the correlation matrix of coefficients in prior selected features(different groups) when apply "selection" or "group" method.}
