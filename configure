@@ -13,5 +13,9 @@ PKG_CPPFLAGS += -DNDEBUG" > ./src/Makevars
 fi
 #if Linux
 if [[ `uname` == Linux ]]; then
-echo "PKG_LIBS += -L/usr/lib/x86_64-linux-gnu/blas/ -lblas -L/usr/lib/x86_64-linux-gnu/lapack/ -llapack" > ./src/Makevars
+   echo "PKG_LIBS += -L/usr/lib/x86_64-linux-gnu/blas/ -lblas -L/usr/lib/x86_64-linux-gnu/lapack/ -llapack" > ./src/Makevars
+fi
+
+if [[ `uname` ~= Linux & `uname` ~= Darwin ]]; then
+  echo "PKG_LIBS += -lblas -llapack" > ./src/Makevars
 fi
