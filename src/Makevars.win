@@ -1,1 +1,1 @@
-PKG_LIBS += -lblas -llapack"
+LDLIBS += -lblas -llapack"
