@@ -1,1 +1,1 @@
-PKG_LIBS += -L$(R_HOME)/bin$(R_ARCH_BIN)/ -lblas -llapack
+PKG_LIBS += -L$(R_HOME)/bin$(R_ARCH_BIN)/ -lRblas -lRlapack
