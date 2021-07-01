@@ -6,16 +6,30 @@ touch ./src/Makevars
 fi
 
 #if mac
-if [[ `uname` == Darwin ]]; then
-echo "PKG_LIBS +=  -L/System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/ -lBLAS -lLAPACK
+#if [[ `uname` == Darwin ]]; then
+#echo "PKG_LIBS +=  -L/System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/ -lBLAS -lLAPACK
+
+#PKG_CPPFLAGS += -DNDEBUG" > ./src/Makevars
+#fi
+#if Linux
+#if [[ `uname` == Linux ]]; then
+#   echo "PKG_LIBS += -L/usr/lib/x86_64-linux-gnu/blas/ -lblas -L/usr/lib/x86_64-linux-gnu/lapack/ -llapack" > ./src/Makevars
+#fi
+
+#if [[ `uname` == MingW32 ]]; then
+#  echo "PKG_LIBS += -lblas -llapack" > ./src/Makevars
+#fi
+
+
+if [ "$(uname)" == "Darwin" ]; then
+        echo "PKG_LIBS +=  -L/System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/ -lBLAS -lLAPACK
 
 PKG_CPPFLAGS += -DNDEBUG" > ./src/Makevars
-fi
-#if Linux
-if [[ `uname` == Linux ]]; then
+elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
    echo "PKG_LIBS += -L/usr/lib/x86_64-linux-gnu/blas/ -lblas -L/usr/lib/x86_64-linux-gnu/lapack/ -llapack" > ./src/Makevars
+elif [ "$(expr substr $(uname -s) 1 10)" == "MINGW32_NT" ]; then
+   echo "PKG_LIBS += -lblas -llapack" > ./src/Makevars
+elif [ "$(expr substr $(uname -s) 1 10)" == "MINGW64_NT" ]; then
+   echo "PKG_LIBS += -lblas -llapack" > ./src/Makevars
 fi
 
-if [[ `uname` ~= Linux & `uname` ~= Darwin ]]; then
-  echo "PKG_LIBS += -lblas -llapack" > ./src/Makevars
-fi
