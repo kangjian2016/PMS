@@ -563,7 +563,6 @@ extract_nii_xyz = function(nii_img){
 #' img <- oro.nifti::readNIfTI(imgfile)
 #' nb <- find_brain_image_neighbors(img, mask,radius=1)
 #' @export
-#'
 find_brain_image_neighbors <- function(img, mask=NULL,
                                        radius = 1){
 
