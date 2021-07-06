@@ -545,7 +545,16 @@ extract_nii_xyz = function(nii_img){
 #' \code{mask > 0} specifies which voxels are on the mask.
 #' Default value is NULL indicating all voxels are considered.
 #' @param radius the size (voxel) of neighborhood.
-#' @return the neighbor indices of each voxel in each row.
+#' @return a list objects consisting of the following components
+#' \describe{
+#' \item{img_nb}{a matrix of dimension p by m indicating the neighbor indices of each voxel on the mask with respect to the original image,
+#' where p is the number of voxels on the masks and m is the maximum number of neighbors across all the voxels}
+#' \item{mask_img_nb}{a matrix of dimension p by m indicating the neighbor indices of each voxel on the mask with respect to the masked image}
+#' \item{num_neighbors}{a vector of integers indicating the number of neighbors for each voxel}
+#' \item{maskidx}{a vector of integers indicating the indices (1-based) of the orginal image where the mask takes a positve value}
+#' \item{maskcoords}{a matrix of dimension p by d for coordinates}
+#' }
+#'
 #' @author Jian Kang <jiankang@umich.edu>
 #' @examples
 #' maskfile <- file.path(system.file("nifti", package="PMS"),"MNI-maxprob-thr0-2mm.nii.gz")

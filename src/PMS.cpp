@@ -101,14 +101,15 @@ Rcpp::List fast_data_gen(int n, int p, double R2, arma::vec& beta_nonzero){
 //' img1 <- oro.nifti::readNIfTI(imgfiles[1])
 //' nb <- find_brain_image_neighbors(img1, mask, radius=1)
 //' # simulate data
-//' n = 200
+//' n = 500
 //' p = ncol(img_dat)
 //' x = matrix(rnorm(n*p),nrow=n,ncol=p)
 //' beta_coef = rep(0,length=ncol(img_dat))
 //' true_idx = nb$mask_img_nb[249,]
 //' beta_coef[true_idx] = 1
-//' rho = rep(0.01,length=ncol(img_dat))
 //' y = x%*%beta_coef + rnorm(nrow(img_dat),sd=0.1)
+//' nb_cor <- 0.99
+//' rho <- rep(-log(nb_cor)/4,length=ncol(img_dat))
 //' res <- fast_PMS_local_spatial(x=x, y = y, coords=nb$maskcoords,neighbors=nb$mask_img_nb,num_neighbors=nb$num_neighbors, rho = rho)
 //'@export
 // [[Rcpp::export]]
@@ -144,7 +145,7 @@ Rcpp::List fast_PMS_local_spatial(arma::mat& x, arma::vec& y,
                             Named("pms_stat") = screen_stat);
 }
 
-//'Fast Read multiple imaging data files on a brain mask
+//'Fast read multiple imaging data files on a brain mask
 //'@param imgfiles a character vector of imaging file names
 //'@param maskfile a character scalar for the  mask file
 //'@param verbose a positive integer showing the progress on the number of images being loaded

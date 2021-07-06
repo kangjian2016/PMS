@@ -2,7 +2,7 @@
 % Please edit documentation in R/RcppExports.R
 \name{fast_read_imgs_mask}
 \alias{fast_read_imgs_mask}
-\title{Fast Read multiple imaging data files on a brain mask}
+\title{Fast read multiple imaging data files on a brain mask}
 \usage{
 fast_read_imgs_mask(imgfiles, maskfile, verbose = 100L)
 }
@@ -17,7 +17,7 @@ fast_read_imgs_mask(imgfiles, maskfile, verbose = 100L)
 a matrix of dimension n by p, where n is the number of images and p is the number of voxels on the mask
 }
 \description{
-Fast Read multiple imaging data files on a brain mask
+Fast read multiple imaging data files on a brain mask
 }
 \examples{
 maskfile <- file.path(system.file("nifti", package="PMS"),"MNI-maxprob-thr0-2mm.nii.gz")
