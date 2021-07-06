@@ -77,5 +77,5 @@ res <- fast_PMS_local_spatial(x=x, y = y, coords=nb$maskcoords,neighbors=nb$mask
 ```
 ## Reference
 
-Jie He and Jian Kang (2020) Prior knowledge guided ultra-high dimensional variable screening with application to neuroimaging data. Statistic Sinica, In Press. 
+Jie He and Jian Kang (2020) Prior knowledge guided ultra-high dimensional variable screening with application to neuroimaging data. Statistica Sinica, In Press. 
 
