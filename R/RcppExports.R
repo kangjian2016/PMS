@@ -66,6 +66,7 @@ fast_data_gen <- function(n, p, R2, beta_nonzero) {
 #' img1 <- oro.nifti::readNIfTI(imgfiles[1])
 #' nb <- find_brain_image_neighbors(img1, mask, radius=1)
 #' # simulate data
+<<<<<<< HEAD
 #' n = 200
 #' p = ncol(img_dat)
 #' x = matrix(rnorm(n*p),nrow=n,ncol=p)
@@ -75,6 +76,14 @@ fast_data_gen <- function(n, p, R2, beta_nonzero) {
 #' rho = rep(0.01,length=ncol(img_dat))
 #' y = x%*%beta_coef + rnorm(nrow(img_dat),sd=0.1)
 #' res <- fast_PMS_local_spatial(x=x, y = y, coords=nb$maskcoords,neighbors=nb$mask_img_nb,num_neighbors=nb$num_neighbors, rho = rho)
+=======
+#' beta_coef = rep(0,length=ncol(img_dat))
+#' true_idx = nb$mask_img_nb[249,]
+#' beta_coef[true_idx] = 100
+#' rho = rep(0.01,length=ncol(img_dat))
+#' y = img_dat%*%beta_coef + rnorm(nrow(img_dat),sd=0.1)
+#' res <- fast_PMS_local_spatial(x=img_dat, y = y, coords=nb$maskcoords,neighbors=nb$mask_img_nb,num_neighbors=nb$num_neighbors, rho = rho)
+>>>>>>> c19978e8515171c9da9af9c7edcf7262dc5eb696
 #'@export
 fast_PMS_local_spatial <- function(x, y, coords, neighbors, num_neighbors, rho, theta = 1e-3) {
     .Call(`_PMS_fast_PMS_local_spatial`, x, y, coords, neighbors, num_neighbors, rho, theta)
