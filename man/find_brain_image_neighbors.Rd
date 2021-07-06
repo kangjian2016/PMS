@@ -22,9 +22,9 @@ the neighbor indices of each voxel in each row.
 Find the neighbors for each voxel in images
 }
 \examples{
-maskfile <- file.path(system.file("nifti", package="PMS"),"AAL_MNI_2mm.nii")
+maskfile <- file.path(system.file("nifti", package="PMS"),"MNI-maxprob-thr0-2mm.nii.gz")
 mask <- oro.nifti::readNIfTI(maskfile)
-imgfile <- file.path(system.file("nifti", package="PMS"),"VBM_example.nii.gz")
+imgfile <- file.path(system.file("nifti", package="PMS"),"VBM_example_01.nii.gz")
 img <- oro.nifti::readNIfTI(imgfile)
 nb <- find_brain_image_neighbors(img, mask,radius=1)
 }

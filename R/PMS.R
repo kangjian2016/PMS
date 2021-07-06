@@ -531,7 +531,12 @@ pms_network = function(x,y,L = NULL, mu = NULL, theta = NULL, num_1 = NULL, cut_
 }
 
 
-
+#' @export
+extract_nii_xyz = function(nii_img){
+  ijk = as.matrix(expand.grid(1:nii_img@dim_[2],1:nii_img@dim_[3],1:nii_img@dim_[4]))
+  mat = rbind(nii_img@srow_x,nii_img@srow_y,nii_img@srow_z)
+  return(cbind(ijk,1)%*%t(mat[1:3,]))
+}
 
 
 #' Find the neighbors for each voxel in images
@@ -543,28 +548,35 @@ pms_network = function(x,y,L = NULL, mu = NULL, theta = NULL, num_1 = NULL, cut_
 #' @return the neighbor indices of each voxel in each row.
 #' @author Jian Kang <jiankang@umich.edu>
 #' @examples
-#' maskfile <- file.path(system.file("nifti", package="PMS"),"AAL_MNI_2mm.nii")
+#' maskfile <- file.path(system.file("nifti", package="PMS"),"MNI-maxprob-thr0-2mm.nii.gz")
 #' mask <- oro.nifti::readNIfTI(maskfile)
-#' imgfile <- file.path(system.file("nifti", package="PMS"),"VBM_example.nii.gz")
+#' imgfile <- file.path(system.file("nifti", package="PMS"),"VBM_example_01.nii.gz")
 #' img <- oro.nifti::readNIfTI(imgfile)
 #' nb <- find_brain_image_neighbors(img, mask,radius=1)
 #' @export
 #'
-find_brain_image_neighbors <- function(img, mask=NULL, radius = 1){
+find_brain_image_neighbors <- function(img, mask=NULL,
+                                       radius = 1){
 
 
   grids <- list(X = 1:img@dim_[2],
                        Y = 1:img@dim_[3],
                        Z = 1:img@dim_[4])
 
+
+
   d = length(grids)
   dim = sapply(1:d,function(i) length(grids[[i]]))
-  coords = expand.grid(grids)
+
+
   if(!is.null(mask)){
     maskidx <- which(mask>0)
     num_voxels = length(maskidx)
   } else{
-    num_voxels = prod(dim)
+    mask = img
+    mask[] = 1
+    maskidx <- which(mask>0)
+    num_voxels = length(maskidx)
   }
 
 
@@ -624,6 +636,25 @@ find_brain_image_neighbors <- function(img, mask=NULL, radius = 1){
   }
 
   close(pb)
-  return(nb)
+
+  img0 = img
+  img0[] = NA
+  img0[mask>0] = 1:num_voxels
+  nb0 = nb
+  na_idx = !is.na(nb0)
+  num_neighbors <- apply(na_idx,1,sum)
+  nb = matrix(NA,nrow=nrow(nb),ncol=ncol(nb))
+  mask_img_nb = nb
+  for(i in 1:nrow(nb)){
+    nb[i,1:num_neighbors[i]] = nb0[i,na_idx[i,]]
+    mask_img_nb[i,1:num_neighbors[i]] = img0[nb0[i,na_idx[i,]]]
+  }
+  coords <- extract_nii_xyz(img)
+
+  return(list(img_nb = nb,
+              mask_img_nb = mask_img_nb,
+              num_neighbors = num_neighbors,
+              maskidx = maskidx,
+              maskcoords = coords[maskidx,]))
 }
 
