@@ -124,14 +124,14 @@ Rcpp::List fast_PMS_local_spatial(arma::mat& x, arma::vec& y,
 
 
   arma::mat lx = arma::zeros<arma::mat>(x.n_rows,x.n_cols);
-
+  arma::vec sqrt_rho = sqrt(rho);
 
   for(int j=0;j<x.n_cols;j++){
     for(int k=0;k<num_neighbors(j);k++){
         int l = neighbors(j,k) - 1L;
         arma::rowvec temp = (coords.row(l) - coords.row(j));
         double dist = arma::accu(temp%temp);
-        lx.col(j) += exp(-rho(j)*dist)*x.col(l);
+        lx.col(j) += exp(-sqrt_rho(j)*sqrt_rho(l)*dist)*x.col(l);
     }
   }
 
